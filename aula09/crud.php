@@ -70,12 +70,22 @@ $nomes = getNomes();
         <th>Nome</th>
         <th>Ações</th>
     </tr>
-    <?php
-    foreach ($nomes as $nome); ?>
+    <?php foreach ($nomes as $nome): ?>
     <tr>
-        <td><?php echo $nome['id'];?></td>
-        <td><?php echo $nome['nome'];?></td>
+        <td><?php echo $nome['id']; ?></td>
+        <td><?php echo $nome['nome']; ?></td>
         <td>
             <a
-            >
+                href="?acao=editar
+                &id=<?php echo $nome['id']; ?>
+                &nome=<?php echo urlencode($nome['nome']); ?>"">
+                Editar
+            </a>
+            <a href="?acao=exluir&id=<?php echo $nome['id']; ?>">
+                Excluir
+            </a>
         </td>
+    </tr>
+    <?php endforeach; ?>
+</table>
+<?php $db->close(); ?>
